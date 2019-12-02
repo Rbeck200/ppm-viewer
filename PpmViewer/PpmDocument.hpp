@@ -36,7 +36,7 @@ private:
 	int _color_depth = 0;
 	string _file_name;
 	vector<vector<Pixel>> _rgb_data;
-	vector<uchar> _raw_bytes;
+	vector<unsigned char> _raw_bytes;
 
 	void checkDocumentValidity(istream& stream)
 	{
@@ -68,9 +68,9 @@ public:
 		{
 			for (auto& pixel : row)
 			{
-				_raw_bytes.push_back((unsigned char)pixel.red);
-				_raw_bytes.push_back((unsigned char)pixel.green);
-				_raw_bytes.push_back((unsigned char)pixel.blue);
+				_raw_bytes.push_back((unsigned char)pixel.getRed());
+				_raw_bytes.push_back((unsigned char)pixel.getGreen());
+				_raw_bytes.push_back((unsigned char)pixel.getBlue());
 			}
 		}
 		return _raw_bytes;
@@ -117,7 +117,7 @@ public:
 						Pixel p;
 						numbers_str >> p;
 						checkDocumentValidity(numbers_str);
-						if (p.red >= 0)
+						if (p.getRed() >= 0)
 						{
 							_rgb_data[row_counter][col_counter] = p;
 							col_counter++;

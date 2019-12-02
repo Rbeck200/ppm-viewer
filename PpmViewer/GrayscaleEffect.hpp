@@ -1,7 +1,7 @@
 #pragma once
 #include "PpmDocument.hpp"
 #include "ImageEffect.hpp"
-class RemoveRedEffect : public ImageEffect
+class GrayscaleEffect : public ImageEffect
 {
 public:
 	virtual void applyEffect(PpmDocument& doc)
@@ -10,9 +10,11 @@ public:
 		{
 			for (int j = 0; j < doc.getWidth(); j++)
 			{
+				int temp = 0;
 				Pixel& p = doc[i][j];
-				p.setRed(0);
+				temp = ((p.getRed() + p.getBlue() + p.getGreen()) / 3);
 
+				p.setPixel(temp, temp, temp);
 				//not necessary as we're using references but it makes our intent more clear
 				doc[i][j] = p;
 			}

@@ -12,15 +12,37 @@ class PpmWindow : public Fl_Double_Window
 {
 private:
 	Fl_Menu_Bar* _menu = nullptr;
-	Fl_Menu_Item _top_bar[8] = {
+	Fl_Menu_Item _top_bar[30] = {
 		{"&File", 0, 0, 0, FL_SUBMENU},
 		{"Open", FL_CTRL + 'o', openFileCallback, this},
 		{"Quit",	FL_CTRL + FL_F + 4, quitCallback, 0},
 		{0}, //this ends a menu group; end of File dropdown
-		{"&Effects", 0, 0, 0, FL_SUBMENU},
+		{"&Remove", 0, 0, 0, FL_SUBMENU},
 		{"Remove Red", 0, applyEffect, (void*)ImageEffectType::RemoveRed},
 		{"Remove Green", 0, applyEffect, (void*)ImageEffectType::RemoveGreen},
-		{0} //end of Effects dropdown
+		{"Remove Blue", 0, applyEffect, (void*)ImageEffectType::RemoveBlue},
+		{0}, //end of Remove effects dropdown
+		{"&Negate", 0, 0, 0, FL_SUBMENU},
+		{"Negate Red", 0, applyEffect, (void*)ImageEffectType::NegateRed},
+		{"Negate Green", 0, applyEffect, (void*)ImageEffectType::NegateGreen},
+		{"Negate Blue", 0, applyEffect, (void*)ImageEffectType::NegateBlue},
+	    {0}, //End of Negate effects dropdown
+		{"&Flip", 0, 0, 0, FL_SUBMENU},
+		{"Vertical Flip", 0, applyEffect, (void*)ImageEffectType::VerFlip},
+		{"Horizontal Flip", 0, applyEffect, (void*)ImageEffectType::HorFlip},
+		{0},
+		{"&Rotate", 0, 0, 0, FL_SUBMENU},
+		{"Rotate 90", 0, applyEffect, (void*)ImageEffectType::Rotate90},
+		{"Rotate 180", 0, applyEffect, (void*)ImageEffectType::Rotate180},
+		{"Rotate 270", 0, applyEffect, (void*)ImageEffectType::Rotate270},
+		{0},
+		{"&Misc.", 0, 0, 0, FL_SUBMENU},
+		{"Blur", 0, applyEffect, (void*)ImageEffectType::Blur},
+		{"Contrast", 0, applyEffect, (void*)ImageEffectType::Contrast},
+		{"Grayscale", 0, applyEffect, (void*)ImageEffectType::Grayscale},
+		{"Noise", 0, applyEffect, (void*)ImageEffectType::Noise},
+		{"Pixelate", 0, applyEffect, (void*)ImageEffectType::NegateRed},
+		{0}
 	};
 	Fl_RGB_Image* _image = nullptr;
 	PpmDocument* _doc = nullptr;
