@@ -155,9 +155,26 @@ public:
 		return _height;
 	}
 
+	void setHeight(const int& h) {
+		_height = h;
+	}
+
 	int getWidth() const
 	{
 		return _width;
+	}
+
+	void setWidth(const int& w) {
+		_width = w;
+	}
+
+	vector<vector<Pixel>> getRGBData() {
+		return _rgb_data;
+	}
+
+	void setRGBData(vector<vector<Pixel>>& newPic) {
+		_rgb_data.clear();
+		_rgb_data = newPic;
 	}
 
 	string getImageFormat() const

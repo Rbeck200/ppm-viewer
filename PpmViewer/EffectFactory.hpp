@@ -8,6 +8,13 @@
 #include "GrayscaleEffect.hpp"
 #include "ContrastEffect.hpp"
 #include "NoiseEffect.hpp"
+#include "BlurEffect.hpp"
+#include "PixelateEffect.hpp"
+#include "HorizontalFlipEffect.hpp"
+#include "VerticalFlipEffect.hpp"
+#include "Rotate90Effect.hpp"
+#include "Rotate180Effect.hpp"
+#include "Rotate270Effect.hpp"
 
 enum class ImageEffectType
 {
@@ -27,7 +34,6 @@ enum class ImageEffectType
 	Rotate90,
 	Rotate180,
 	Rotate270
-
 };
 
 class EffectFactory
@@ -72,6 +78,34 @@ public:
 
 		case ImageEffectType::Noise:
 			return new NoiseEffect{};
+			break;
+
+		case ImageEffectType::Blur:
+			return new BlurEffect{};
+			break;
+
+		case ImageEffectType::Pixelate:
+			return new PixelateEffect{};
+			break;
+
+		case ImageEffectType::HorFlip:
+			return new HorizontalFlipEffect{};
+			break;
+
+		case ImageEffectType::VerFlip:
+			return new VerticalFlipEffect{};
+			break;
+
+		case ImageEffectType::Rotate90:
+			return new Rotate90Effect{};
+			break;
+
+		case ImageEffectType::Rotate180:
+			return new Rotate180Effect{};
+			break;
+
+		case ImageEffectType::Rotate270:
+			return new Rotate270Effect{};
 			break;
 
 		default: 

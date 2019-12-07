@@ -17,6 +17,11 @@ private:
 		{"Open", FL_CTRL + 'o', openFileCallback, this},
 		{"Quit",	FL_CTRL + FL_F + 4, quitCallback, 0},
 		{0}, //this ends a menu group; end of File dropdown
+		{"&Rotate", 0, 0, 0, FL_SUBMENU},
+		{"Rotate 90", 0, applyEffect, (void*)ImageEffectType::Rotate90},
+		{"Rotate 180", 0, applyEffect, (void*)ImageEffectType::Rotate180},
+		{"Rotate 270", 0, applyEffect, (void*)ImageEffectType::Rotate270},
+		{0},
 		{"&Remove", 0, 0, 0, FL_SUBMENU},
 		{"Remove Red", 0, applyEffect, (void*)ImageEffectType::RemoveRed},
 		{"Remove Green", 0, applyEffect, (void*)ImageEffectType::RemoveGreen},
@@ -31,17 +36,12 @@ private:
 		{"Vertical Flip", 0, applyEffect, (void*)ImageEffectType::VerFlip},
 		{"Horizontal Flip", 0, applyEffect, (void*)ImageEffectType::HorFlip},
 		{0},
-		{"&Rotate", 0, 0, 0, FL_SUBMENU},
-		{"Rotate 90", 0, applyEffect, (void*)ImageEffectType::Rotate90},
-		{"Rotate 180", 0, applyEffect, (void*)ImageEffectType::Rotate180},
-		{"Rotate 270", 0, applyEffect, (void*)ImageEffectType::Rotate270},
-		{0},
 		{"&Misc.", 0, 0, 0, FL_SUBMENU},
 		{"Blur", 0, applyEffect, (void*)ImageEffectType::Blur},
 		{"Contrast", 0, applyEffect, (void*)ImageEffectType::Contrast},
 		{"Grayscale", 0, applyEffect, (void*)ImageEffectType::Grayscale},
 		{"Noise", 0, applyEffect, (void*)ImageEffectType::Noise},
-		{"Pixelate", 0, applyEffect, (void*)ImageEffectType::NegateRed},
+		{"Pixelate", 0, applyEffect, (void*)ImageEffectType::Pixelate},
 		{0}
 	};
 	Fl_RGB_Image* _image = nullptr;
